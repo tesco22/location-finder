@@ -20,11 +20,18 @@ namespace LocationFinder.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<string>> GetLocations()
+        public async Task<ActionResult<string>> GetLocations([FromQuery] string keyword, [FromQuery] int radius, [FromQuery] string location)
         {
-            var result = await _locationRepository.GetLocationData("software", 1500, "33.1507,-96.8236");
+            try
+            {
+                var result = await _locationRepository.GetLocationData(keyword, radius, location);
 
-            return result;
+                return result;
+            }
+            catch(Exception e)
+            {
+                throw;
+            }
         }
     }
 }

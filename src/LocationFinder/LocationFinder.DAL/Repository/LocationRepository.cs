@@ -26,16 +26,22 @@ namespace LocationFinder.DAL.Repository
 
         public async Task<string> GetLocationData(string keyword, int radius, string location)
         {
-            
-            string requestUri = $"maps/api/place/nearbysearch/json?location={location}&radius={radius}&keyword={keyword}&key={_apiKey}";
-            var result = await _client.GetAsync(requestUri);
+            try
+            {
+                string requestUri = $"maps/api/place/nearbysearch/json?location={location}&radius={radius}&keyword={keyword}&key={_apiKey}";
+                var result = await _client.GetAsync(requestUri);
 
-            var data = await result.Content.ReadAsStringAsync();
+                var data = await result.Content.ReadAsStringAsync();
 
-            //parse out the response since I only care about the name of the place
-            var response = GetResponse(data);
+                //parse out the response since I only care about the name of the place
+                var response = GetResponse(data);
 
-            return response;
+                return response;
+            }
+            catch(Exception e)
+            {
+                throw;
+            }
         }
 
         private string GetResponse(string data)
