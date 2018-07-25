@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationFinder.API", "Locat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationFinder.DAL", "LocationFinder.DAL\LocationFinder.DAL.csproj", "{DFB5A6CA-1F1A-4BAA-9E13-DBEBD0E54DB8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationFinder.Domain", "LocationFinder.Domain\LocationFinder.Domain.csproj", "{C88DFD1C-4DAD-42C8-B9BA-B42DAD3176E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DFB5A6CA-1F1A-4BAA-9E13-DBEBD0E54DB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFB5A6CA-1F1A-4BAA-9E13-DBEBD0E54DB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFB5A6CA-1F1A-4BAA-9E13-DBEBD0E54DB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C88DFD1C-4DAD-42C8-B9BA-B42DAD3176E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C88DFD1C-4DAD-42C8-B9BA-B42DAD3176E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C88DFD1C-4DAD-42C8-B9BA-B42DAD3176E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C88DFD1C-4DAD-42C8-B9BA-B42DAD3176E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

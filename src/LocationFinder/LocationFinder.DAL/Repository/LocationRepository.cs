@@ -1,5 +1,8 @@
 ﻿using LocationFinder.DAL.Repository.Interfaces;
+using LocationFinder.Domain.GoogleResponses;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -27,9 +30,29 @@ namespace LocationFinder.DAL.Repository
             string requestUri = $"maps/api/place/nearbysearch/json?location={location}&radius={radius}&keyword={keyword}&key={_apiKey}";
             var result = await _client.GetAsync(requestUri);
 
-            var response = await result.Content.ReadAsStringAsync();
+            var data = await result.Content.ReadAsStringAsync();
+
+            //parse out the response since I only care about the name of the place
+            var response = GetResponse(data);
 
             return response;
+        }
+
+        private string GetResponse(string data)
+        {
+            var locationNames = new List<string>();
+            var jResponse = JsonConvert.DeserializeObject<GooglePlaceResult>(data);
+
+            var resultList = jResponse.Results;
+
+            foreach(var item in resultList)
+            {
+                locationNames.Add(item.GetValue("name").ToString());
+            }
+
+            return JsonConvert.SerializeObject(locationNames).ToString();
+
+
         }
     }
 }
